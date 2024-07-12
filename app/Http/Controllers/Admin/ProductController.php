@@ -41,7 +41,7 @@ class ProductController extends Controller
     {
         $data = $request->all();
         $product = $this->store->first()->products()->create($data);
-        //$product->categories()->sync($request->categories);
+        $product->categories()->sync($request->categories);
         session()->flash('message', ['type' => 'success', 'body' => 'Sucesso ao cadastrar produto']);
         return redirect()->route('admin.products.index');
     }

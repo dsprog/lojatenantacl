@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="flex flex-col">
                 <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-                    <form action="{{route('products.update', $product)}}" method="POST">
+                    <form action="{{route('admin.products.update', $product)}}" method="POST">
                         @csrf
                         @method('PUT')
                         <div class="w-full mb-8">

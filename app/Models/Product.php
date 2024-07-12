@@ -18,6 +18,17 @@ class Product extends Model
         $this->attributes['slug'] = Str::slug($prop);
     }
 
+    public function setPriceAttribute($prop)
+    {
+        $price = str_replace(['.', ','], ['', '.'], $prop);
+        $this->attributes['price'] = $price * 100;
+    }
+
+    public function getPriceAttribute()
+    {
+        return $this->attributes['price'] / 100;
+    }
+
     public function store()
     {
         return $this->belongsTo(Store::class);
