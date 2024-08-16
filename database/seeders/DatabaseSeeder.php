@@ -18,20 +18,20 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-
+/*
         \App\Models\Tenant::factory(10)
             ->hasStores(1)
             ->hasUsers(1)
             ->create();
-
+*/
         //dd(\App\Models\Store::all());
-        /*
-        foreach(\App\Models\Store::all() as $store) {
+        
+        foreach(\App\Models\Store::withoutGlobalScope(\App\Scopes\TenantScope::class)->get() as $store) {
 
             $tenantAndStoreIds = ['store_id' => $store->id, 'tenant_id' => $store->tenant_id];
 
             \App\Models\Product::factory(20, $tenantAndStoreIds)
                 ->create();
-        }*/
+        }
     }
 }

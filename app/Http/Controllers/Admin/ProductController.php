@@ -74,8 +74,8 @@ class ProductController extends Controller
         $product = $this->product->findOrFail($id);
         $product->update($request->all());
         $product->categories()->sync($request->categories);
-        session()->flash('message', ['type' => 'success', 'body' => 'Sucesso ao atualizar produto']);
-        return redirect()->route('admin.products.edit', $product);
+        return redirect()->route('admin.products.index')
+            ->with('success', 'Sucesso ao atualizar produto');
     }
 
     /**
@@ -85,7 +85,7 @@ class ProductController extends Controller
     {
         $product = $this->product->findOrFail($id);
         $product->delete();
-        session()->flash('message', ['type' => 'success', 'body' => 'Sucesso ao remover produto']);
-        return redirect()->route('admin.products.index');
+        return redirect()->route('admin.products.index')
+            ->with('success', 'Sucesso ao remover produto');
     }
 }

@@ -21,7 +21,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard', function () {
-    dd(Store::all());
+    //dd(Store::all());
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 

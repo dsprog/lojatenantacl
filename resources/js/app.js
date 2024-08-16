@@ -45,3 +45,10 @@ themeToggleBtn.addEventListener("click", function () {
     }
 });
 
+
+var closeAlertBtn = document.getElementById("close-alert");
+if (closeAlertBtn !== null){
+    closeAlertBtn.addEventListener("click", function () {
+        document.getElementById("alert-msg").style.display = "none";
+    });
+}
