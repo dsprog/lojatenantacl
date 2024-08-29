@@ -25,13 +25,10 @@ class DatabaseSeeder extends Seeder
             ->create();
 */
         //dd(\App\Models\Store::all());
-        
-        foreach(\App\Models\Store::withoutGlobalScope(\App\Scopes\TenantScope::class)->get() as $store) {
-
+        // \App\Models\Store::withoutGlobalScope(\App\Scopes\TenantScope::class
+        foreach(\App\Models\Store::all() as $store) {
             $tenantAndStoreIds = ['store_id' => $store->id, 'tenant_id' => $store->tenant_id];
-
-            \App\Models\Product::factory(20, $tenantAndStoreIds)
-                ->create();
+            \App\Models\Product::factory(20, $tenantAndStoreIds)->create();
         }
     }
 }

@@ -16,6 +16,14 @@ use App\Http\Controllers\ProfileController;
 |
 */
 
+Route::domain('{subdomain}.localhost')
+->controller(\App\Http\Controllers\Front\StoreController::class)
+->group(function(){
+
+    Route::get("/", 'index')->name('front.store');
+    
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
