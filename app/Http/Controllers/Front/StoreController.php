@@ -9,6 +9,13 @@ use Illuminate\Http\Request;
 class StoreController extends Controller
 {
     public function index($subdomain){
-        dd(Store::whereSubdomain($subdomain)->first());
+        $store = Store::whereSubdomain($subdomain)
+            ->with('products')
+            ->first();
+            
+        return view("front.index", compact("store"));
+    }
+
+    public function cart($subdomain){
     }
 }

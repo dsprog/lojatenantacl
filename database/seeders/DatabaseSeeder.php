@@ -12,18 +12,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        //\App\Models\User::factory(10)->create();
 
         // \App\Models\User::factory()->create([
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
-/*
+        /*
+
         \App\Models\Tenant::factory(10)
             ->hasStores(1)
             ->hasUsers(1)
             ->create();
-*/
+            */
+
         //dd(\App\Models\Store::all());
         // \App\Models\Store::withoutGlobalScope(\App\Scopes\TenantScope::class
         foreach(\App\Models\Store::all() as $store) {
