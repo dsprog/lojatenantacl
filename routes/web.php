@@ -20,8 +20,15 @@ Route::domain('{subdomain}.localhost')
 ->controller(\App\Http\Controllers\Front\StoreController::class)
 ->group(function(){
     Route::get("/", 'index')->name('front.store');
-    Route::get("/cart", 'cart')->name('front.cart');
     
+    Route::prefix('cart')->name('cart.')
+    ->controller(\App\Http\Controllers\Front\CartController::class)
+    ->group(function(){
+        Route::get('/', 'index')->name('index');
+        Route::get('add/{product}', 'add')->name('add');
+        Route::get('remove/{product}', 'remove')->name('remove');
+        Route::get('cancel', 'cancel')->name('cancel');
+    });
 });
 
 Route::get('/', function () {

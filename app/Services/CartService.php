@@ -9,7 +9,7 @@ class CartService
 
     public function __construct(private Session $session){}
 
-    public function view()
+    public function all()
     {
         $items = $this->session->get(self::CART_KEY);
         return !$items ? [] : $items;
