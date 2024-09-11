@@ -17,9 +17,8 @@ use App\Http\Controllers\ProfileController;
 */
 
 Route::domain('{subdomain}.localhost')
-->controller(\App\Http\Controllers\Front\StoreController::class)
 ->group(function(){
-    Route::get("/", 'index')->name('front.store');
+    Route::get("/", [\App\Http\Controllers\Front\StoreController::class, 'index'])->name('front.store');
     
     Route::prefix('cart')->name('cart.')
     ->controller(\App\Http\Controllers\Front\CartController::class)
@@ -28,6 +27,14 @@ Route::domain('{subdomain}.localhost')
         Route::get('add/{product}', 'add')->name('add');
         Route::get('remove/{product}', 'remove')->name('remove');
         Route::get('cancel', 'cancel')->name('cancel');
+    });
+
+    Route::prefix('checkout')/*->middleware('auth.store')*/->name('checkout.')
+    ->controller(\App\Http\Controllers\Front\CheckoutController::class)
+    ->group(function(){
+        Route::get('/', 'checkout')->name('checkout');
+        Route::post('/proccess', 'proccess')->name('proccess');
+        Route::get('/thanks', 'thanks')->name('thanks');
     });
 });
 
